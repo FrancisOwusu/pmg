@@ -232,17 +232,6 @@ class FeesMasterController extends Controller
         if(isset($request->faculty) || isset($request->program)){
             $enrolls = StudentEnroll::where('status', '1');
 
-            if(!empty($request->faculty) && $request->faculty != '0'){
-                $enrolls->with('program')->whereHas('program', function ($query) use ($faculty){
-                    $query->where('faculty_id', $faculty);
-                });
-            }
-            if(!empty($request->program) && $request->program != '0'){
-                $enrolls->where('program_id', $program);
-            }
-            if(!empty($request->session) && $request->session != '0'){
-                $enrolls->where('session_id', $session);
-            }
             if(!empty($request->semester) && $request->semester != '0'){
                 $enrolls->where('semester_id', $semester);
             }
@@ -279,10 +268,10 @@ class FeesMasterController extends Controller
     {
         //Validation
         $request->validate([
-            'faculty' => 'required',
-            'program' => 'required',
-            'session' => 'required',
-            'semester' => 'required',
+//            'faculty' => 'required',
+//            'program' => 'required',
+//            'session' => 'required',
+//            'semester' => 'required',
             'section' => 'required',
             'amount' => 'required|numeric',
             'type' => 'required|numeric',
@@ -298,7 +287,7 @@ class FeesMasterController extends Controller
             $feesMaster = new FeesMaster;
             $feesMaster->faculty_id = $request->faculty;
             $feesMaster->program_id = $request->program;
-            $feesMaster->session_id = $request->session;
+            $feesMaster->session_id = 1;
             $feesMaster->semester_id = $request->semester;
             $feesMaster->section_id = $request->section;
             $feesMaster->category_id = $request->category;
