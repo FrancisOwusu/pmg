@@ -41,7 +41,7 @@
                     <div class="card-block">
                         <input type="text" name="faculty" value="{{ $selected_faculty }}" hidden>
                         <input type="text" name="program" value="{{ $selected_program }}" hidden>
-                        <input type="text" name="session" value="{{ $selected_session }}" hidden>
+{{--                        <input type="text" name="session" value="{{ $selected_session }}" hidden>--}}
                         <input type="text" name="semester" value="{{ $selected_semester }}" hidden>
                         <input type="text" name="section" value="{{ $selected_section }}" hidden>
 
